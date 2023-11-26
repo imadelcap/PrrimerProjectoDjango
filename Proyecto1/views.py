@@ -1,16 +1,16 @@
 from django.http import HttpResponse
-from django.template import Template, Context
+from django.template import loader
+
 
 def primerTemplate(self):
     
-    miHtml = open("C:/Users/Imanol Calvo/Desktop/Curso Python/Proyecto1/Proyecto1/Plantillas/template1.html")
+    #miHtml = open("C:/Users/Imanol Calvo/Desktop/Curso Python/Proyecto1/Proyecto1/Plantillas/template1.html")
 
-    plantilla = Template(miHtml.read())
+    plantilla = loader.get_template("template1.html")
+    
+    #miHtml.close()
 
-    miHtml.close()
-
-    mi_contexto = Context()
-
-    documento = plantilla.render(mi_contexto)
+    #mi_contexto = Context()
+    documento = plantilla.render()
 
     return HttpResponse(documento)
